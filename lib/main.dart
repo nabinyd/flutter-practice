@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:practicewidget/home_page.dart';
 import 'package:practicewidget/setting_page.dart';
+import 'package:practicewidget/silverAppBar.dart';
 import 'package:practicewidget/simple_appbar.dart';
 
 void main() => runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home_page': (context) => HomePage(),
         '/setting': (context) => SettingPage(),
+        'silverappbar': (context) => SilverAppBar(),
       },
     );
   }
@@ -210,6 +212,35 @@ class MyHomePage extends StatelessWidget {
                           builder: (context) => buildset(),
                         ),
                     child: Text('bottomsheet')),
+                SizedBox(height: 20),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SilverAppBar()));
+                    },
+                    child: Text('siverappbar')),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('close'))
+                          ],
+                          title: Text('Alert'),
+                          content: Text('this is a content page'),
+                          contentPadding: EdgeInsets.all(20),
+                        ),
+                      );
+                    },
+                    child: Text('alert'))
               ],
             ),
           )));

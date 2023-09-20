@@ -6,6 +6,7 @@ import 'package:practicewidget/home_page.dart';
 import 'package:practicewidget/setting_page.dart';
 import 'package:practicewidget/silverAppBar.dart';
 import 'package:practicewidget/simple_appbar.dart';
+import 'package:practicewidget/snackbar.dart';
 
 void main() => runApp(const MyApp());
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home_page': (context) => HomePage(),
         '/setting': (context) => SettingPage(),
-        'silverappbar': (context) => SilverAppBar(),
+        '/silverappbar': (context) => SilverAppBar(),
+        '/snackbar': (context) => SnackBarWidget(),
       },
     );
   }
@@ -240,7 +242,15 @@ class MyHomePage extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text('alert'))
+                    child: Text('alert')),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/snackbar');
+                    },
+                    child: Text('show snackbar')),
               ],
             ),
           )));
